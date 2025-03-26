@@ -31,6 +31,7 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.alarm_label = self.findChild(QtWidgets.QLabel, "alarm_label")
         self.silence_button = self.findChild(QtWidgets.QPushButton, "silence_button")
         self.silence_button.clicked.connect(self.silence_alarm)
+        self.unsilence_button.clicked.connect(self.alarm_reset)
 
         # **Graph Placeholders**
         self.ecg_graph = self.findChild(QtWidgets.QWidget, "ecg_graph")
@@ -65,6 +66,23 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.patient_data.update_data()  # Update patient data randomly
 
         # **Update Labels**
+          # Change vital sign colors based on values
+        # SPO2
+        if  not self.patient_data.spo2 > 95:
+            self.spo2_value.setStyleSheet("color: red;font-size:90px;")  
+        
+        # # NIBP
+        # if 90 <= self.patient_data.nibp_systolic <= 140 and 60 <= self.patient_data.nibp_diastolic <= 90:
+        #     self.nibp_value.setStyleSheet("color: green;font-size: 30px;")  
+        # else:
+        #     self.nibp_value.setStyleSheet("color: red;font-size: 30px;")  
+        
+        # # Temperature
+        # if 36.5 <= self.patient_data.temperature <= 37.5:
+        #     self.temp_value.setStyleSheet("color: green;font-size: 30px;")  
+        # else:
+        #     self.temp_value.setStyleSheet("color: red;font-size: 30px;")  
+        
         self.spo2_value.setText(f"{round(self.patient_data.spo2, 1)}%")
         self.nibp_value.setText(f"{int(round(self.patient_data.nibp_systolic))}/{int(round(self.patient_data.nibp_diastolic))} mmHg")
         self.ibp_value.setText(f"{int(round(self.patient_data.ibp_systolic))}/{int(round(self.patient_data.ibp_diastolic))} mmHg")
@@ -72,7 +90,13 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.co2_value.setText(f"{round(self.patient_data.co2_percent, 1)}%")
         self.resp_value.setText(f"{int(round(self.patient_data.respiration_rate))} BPM")
         self.resp_value_2.setText(f"{int(round(self.patient_data.respiration_rate))}")
-        self.pattern_value.setText(self.patient_data.pattern_name)
+        if self.patient_data.pattern_name == "Normal":
+            self.pattern_value.setText(self.patient_data.pattern_name)
+            self.pattern_value.setStyleSheet("color: green;font-size: 30px;")  
+        else:
+            self.pattern_value.setText(self.patient_data.pattern_name)
+            self.pattern_value.setStyleSheet("color: red;font-size: 30px;")  #
+
 
         # **Update Graphs**
         self.ecg_curve.setData(range(len(self.patient_data.ecg_data)), self.patient_data.ecg_data)
@@ -83,6 +107,13 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.alarm_active = False
         self.alarm_label.setText("Alarm Silenced")
         self.silence_button.setEnabled(False)
+    def alarm_reset(self):
+        """Silence the alarm"""
+        self.alarm_active = True
+        self.alarm_label.setText("Alarm ")
+        self.silence_button.setEnabled(True)
+ 
+
 
 
 if __name__ == "__main__":
