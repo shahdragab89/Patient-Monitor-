@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1375</width>
+    <height>953</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(26, 26, 26);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,0">
+       <item>
+        <widget class="QFrame" name="frame_2">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="4,1">
+          <item>
+           <widget class="QFrame" name="frame_3">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QWidget" name="ecg_graph" native="true"/>
+             </item>
+             <item>
+              <widget class="QWidget" name="eeg_graph" native="true"/>
+             </item>
+             <item>
+              <widget class="QWidget" name="spo2_graph" native="true"/>
+             </item>
+             <item>
+              <widget class="QWidget" name="resp_graph" native="true"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_4">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,1,1">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="pattern_value">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(18, 255, 18);
+font: 75 80pt &quot;Leelawadee UI&quot;;</string>
+               </property>
+               <property name="text">
+                <string>80</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="alarm_label">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(18, 255, 18);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+               </property>
+               <property name="text">
+                <string>Alarms Label</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="spo2_value">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(15, 255, 255);
+font: 75 80pt &quot;Leelawadee UI&quot;;</string>
+               </property>
+               <property name="text">
+                <string>98</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="resp_value_2">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(255, 255, 13);
+font: 75 80pt &quot;Leelawadee UI&quot;;</string>
+               </property>
+               <property name="text">
+                <string>20</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_9">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="frame_10">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+font: 75 14pt &quot;Leelawadee UI&quot;;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_12">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6" stretch="2,1,1,2,1,1">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_6">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>T1</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_9">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 9pt &quot;Leelawadee UI&quot;;
+color: rgb(110, 110, 110);</string>
+                  </property>
+                  <property name="text">
+                   <string>38.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_11">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 9pt &quot;Leelawadee UI&quot;;
+color: rgb(110, 110, 110);</string>
+                  </property>
+                  <property name="text">
+                   <string>35.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>T2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_10">
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 9pt &quot;Leelawadee UI&quot;;
+color: rgb(110, 110, 110);</string>
+                  </property>
+                  <property name="text">
+                   <string>38.0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_12">
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 9pt &quot;Leelawadee UI&quot;;
+color: rgb(110, 110, 110);</string>
+                  </property>
+                  <property name="text">
+                   <string>35.0</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_13">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="temp_value">
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 30pt &quot;Leelawadee UI&quot;;
+color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>37.2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="temp_value_2">
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 30pt &quot;Leelawadee UI&quot;;
+color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string>37.4</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_14">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_13">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(18, 255, 18);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>HR</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_14">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 13);</string>
+                  </property>
+                  <property name="text">
+                   <string>80</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_18">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_12">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_21">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 13);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>RR</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="resp_value">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+color: rgb(255, 255, 13);</string>
+                  </property>
+                  <property name="text">
+                   <string>20</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_16">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_10">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_17">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">
+color: rgb(232, 19, 19);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>IBP</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="ibp_value">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+
+color: rgb(232, 19, 19);
+</string>
+                  </property>
+                  <property name="text">
+                   <string>98</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_19">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_13">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_18">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(15, 255, 255);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>CO2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="co2_value">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+color: rgb(15, 255, 255);
+</string>
+                  </property>
+                  <property name="text">
+                   <string>98</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_17">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_19">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>NIBP</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="nibp_value">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+color: rgb(110, 110, 110);
+</string>
+                  </property>
+                  <property name="text">
+                   <string>98</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_15">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_15">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">
+QLabel {
+    font: bold 70px Arial; /* Large bold font */
+    color: white; /* White text */
+    text-shadow: 2px 2px 5px #444444; /* Shadow effect */
+    background-color: transparent; /* No background */
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>120/80 </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_16">
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+    font: bold 20px Arial; /* Slightly smaller font */
+    color: #999999; /* Gray text */
+    text-shadow: 1px 1px 3px #444444; /* Lighter shadow */
+    background-color: transparent; /* No background */
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>( 93)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_11">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="unsilence_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #333333;  /* Dark gray background */
+    color: white;  /* White text */
+    border-radius: 5px;  /* Rounded corners */
+    border: 2px solid #222222;  /* Slightly darker border */
+    padding: 8px 16px;  /* Padding for a better appearance */
+    font: bold 14px Arial;  /* Bold text */
+}
+
+QPushButton:hover {
+    background-color: #444444;  /* Slightly lighter gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #222222;  /* Darker gray when pressed */
+}
+
+QPushButton#alarmReset {
+    background-color: #cccc00;  /* Yellow for Alarm Reset */
+    color: black;
+    border: 2px solid #aaaa00;
+}
+
+QPushButton#alarmPause {
+    background-color: #cc6600;  /* Orange for Alarm Pause */
+    color: black;
+    border: 2px solid #aa5500;
+}
+
+QPushButton:disabled {
+    background-color: #555555;  /* Gray when disabled */
+    color: #888888;
+    border: 2px solid #444444;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>Alarm Reset</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="silence_button">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #333333;  /* Dark gray background */
+    color: white;  /* White text */
+    border-radius: 5px;  /* Rounded corners */
+    border: 2px solid #222222;  /* Slightly darker border */
+    padding: 8px 16px;  /* Padding for a better appearance */
+    font: bold 14px Arial;  /* Bold text */
+}
+
+QPushButton:hover {
+    background-color: #444444;  /* Slightly lighter gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #222222;  /* Darker gray when pressed */
+}
+
+QPushButton#alarmReset {
+    background-color: #cccc00;  /* Yellow for Alarm Reset */
+    color: black;
+    border: 2px solid #aaaa00;
+}
+
+QPushButton#alarmPause {
+    background-color: #cc6600;  /* Orange for Alarm Pause */
+    color: black;
+    border: 2px solid #aa5500;
+}
+
+QPushButton:disabled {
+    background-color: #555555;  /* Gray when disabled */
+    color: #888888;
+    border: 2px solid #444444;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>Alarm Pause</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="normal_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #333333;  /* Dark gray background */
+    color: white;  /* White text */
+    border-radius: 5px;  /* Rounded corners */
+    border: 2px solid #222222;  /* Slightly darker border */
+    padding: 8px 16px;  /* Padding for a better appearance */
+    font: bold 14px Arial;  /* Bold text */
+}
+
+QPushButton:hover {
+    background-color: #444444;  /* Slightly lighter gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #222222;  /* Darker gray when pressed */
+}
+
+QPushButton#alarmReset {
+    background-color: #cccc00;  /* Yellow for Alarm Reset */
+    color: black;
+    border: 2px solid #aaaa00;
+}
+
+QPushButton#alarmPause {
+    background-color: #cc6600;  /* Orange for Alarm Pause */
+    color: black;
+    border: 2px solid #aa5500;
+}
+
+QPushButton:disabled {
+    background-color: #555555;  /* Gray when disabled */
+    color: #888888;
+    border: 2px solid #444444;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>normal</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="tachy_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #333333;  /* Dark gray background */
+    color: white;  /* White text */
+    border-radius: 5px;  /* Rounded corners */
+    border: 2px solid #222222;  /* Slightly darker border */
+    padding: 8px 16px;  /* Padding for a better appearance */
+    font: bold 14px Arial;  /* Bold text */
+}
+
+QPushButton:hover {
+    background-color: #444444;  /* Slightly lighter gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #222222;  /* Darker gray when pressed */
+}
+
+QPushButton#alarmReset {
+    background-color: #cccc00;  /* Yellow for Alarm Reset */
+    color: black;
+    border: 2px solid #aaaa00;
+}
+
+QPushButton#alarmPause {
+    background-color: #cc6600;  /* Orange for Alarm Pause */
+    color: black;
+    border: 2px solid #aa5500;
+}
+
+QPushButton:disabled {
+    background-color: #555555;  /* Gray when disabled */
+    color: #888888;
+    border: 2px solid #444444;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>tachy</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="brady_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #333333;  /* Dark gray background */
+    color: white;  /* White text */
+    border-radius: 5px;  /* Rounded corners */
+    border: 2px solid #222222;  /* Slightly darker border */
+    padding: 8px 16px;  /* Padding for a better appearance */
+    font: bold 14px Arial;  /* Bold text */
+}
+
+QPushButton:hover {
+    background-color: #444444;  /* Slightly lighter gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #222222;  /* Darker gray when pressed */
+}
+
+QPushButton#alarmReset {
+    background-color: #cccc00;  /* Yellow for Alarm Reset */
+    color: black;
+    border: 2px solid #aaaa00;
+}
+
+QPushButton#alarmPause {
+    background-color: #cc6600;  /* Orange for Alarm Pause */
+    color: black;
+    border: 2px solid #aa5500;
+}
+
+QPushButton:disabled {
+    background-color: #555555;  /* Gray when disabled */
+    color: #888888;
+    border: 2px solid #444444;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>brady</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="afib_btn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #333333;  /* Dark gray background */
+    color: white;  /* White text */
+    border-radius: 5px;  /* Rounded corners */
+    border: 2px solid #222222;  /* Slightly darker border */
+    padding: 8px 16px;  /* Padding for a better appearance */
+    font: bold 14px Arial;  /* Bold text */
+}
+
+QPushButton:hover {
+    background-color: #444444;  /* Slightly lighter gray when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #222222;  /* Darker gray when pressed */
+}
+
+QPushButton#alarmReset {
+    background-color: #cccc00;  /* Yellow for Alarm Reset */
+    color: black;
+    border: 2px solid #aaaa00;
+}
+
+QPushButton#alarmPause {
+    background-color: #cc6600;  /* Orange for Alarm Pause */
+    color: black;
+    border: 2px solid #aa5500;
+}
+
+QPushButton:disabled {
+    background-color: #555555;  /* Gray when disabled */
+    color: #888888;
+    border: 2px solid #444444;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>afib</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
