@@ -51,12 +51,6 @@
              <item>
               <widget class="QWidget" name="eeg_graph" native="true"/>
              </item>
-             <item>
-              <widget class="QWidget" name="spo2_graph" native="true"/>
-             </item>
-             <item>
-              <widget class="QWidget" name="resp_graph" native="true"/>
-             </item>
             </layout>
            </widget>
           </item>
@@ -68,7 +62,7 @@
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,1,1">
+            <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,1">
              <property name="spacing">
               <number>0</number>
              </property>
@@ -82,27 +76,13 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QLabel" name="pattern_value">
+              <widget class="QLabel" name="label">
                <property name="styleSheet">
                 <string notr="true">color: rgb(18, 255, 18);
 font: 75 80pt &quot;Leelawadee UI&quot;;</string>
                </property>
                <property name="text">
                 <string>80</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="alarm_label">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(18, 255, 18);
-font: 75 16pt &quot;Leelawadee UI&quot;;</string>
-               </property>
-               <property name="text">
-                <string>Alarms Label</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -151,7 +131,7 @@ font: 75 80pt &quot;Leelawadee UI&quot;;</string>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
+         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="5,1">
           <property name="spacing">
            <number>2</number>
           </property>
@@ -343,7 +323,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
                   </property>
                   <property name="text">
-                   <string>37.4</string>
+                   <string>37.4°C</string>
                   </property>
                  </widget>
                 </item>
@@ -400,7 +380,7 @@ font: 75 16pt &quot;Leelawadee UI&quot;;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+                   <string notr="true">font: 75 16pt &quot;Leelawadee UI&quot;;
 color: rgb(0, 0, 0);
 background-color: rgb(255, 255, 13);</string>
                   </property>
@@ -462,7 +442,7 @@ font: 75 16pt &quot;Leelawadee UI&quot;;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+                   <string notr="true">font: 75 16pt &quot;Leelawadee UI&quot;;
 color: rgb(255, 255, 13);</string>
                   </property>
                   <property name="text">
@@ -524,7 +504,7 @@ font: 75 16pt &quot;Leelawadee UI&quot;;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+                   <string notr="true">font: 75 16pt &quot;Leelawadee UI&quot;;
 
 color: rgb(232, 19, 19);
 </string>
@@ -587,7 +567,7 @@ font: 75 16pt &quot;Leelawadee UI&quot;;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+                   <string notr="true">font: 75 16pt &quot;Leelawadee UI&quot;;
 color: rgb(15, 255, 255);
 </string>
                   </property>
@@ -652,7 +632,7 @@ font: 75 16pt &quot;Leelawadee UI&quot;;</string>
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 75 12pt &quot;Leelawadee UI&quot;;
+                   <string notr="true">font: 75 16pt &quot;Leelawadee UI&quot;;
 color: rgb(110, 110, 110);
 </string>
                   </property>
@@ -752,6 +732,18 @@ QLabel {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
@@ -1088,6 +1080,167 @@ QPushButton:disabled {
                <property name="text">
                 <string>afib</string>
                </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_5">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_6">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="pattern_value_2">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: white;
+font: 75 14pt &quot;Leelawadee UI&quot;;</string>
+                     </property>
+                     <property name="text">
+                      <string>Alarm State:</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="alarm_label">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(232, 19, 19);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                     </property>
+                     <property name="text">
+                      <string>Alarms Label</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_7">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="pattern_value_3">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: white;
+font: 75 14pt &quot;Leelawadee UI&quot;;</string>
+                     </property>
+                     <property name="text">
+                      <string>Patient State:</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="pattern_value">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(18, 255, 18);
+font: 75 16pt &quot;Leelawadee UI&quot;;</string>
+                     </property>
+                     <property name="text">
+                      <string>pattern Value</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
