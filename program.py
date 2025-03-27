@@ -15,7 +15,7 @@ class MonitoringGUI(QtWidgets.QMainWindow):
 
         self.patient_data = PatientData()
         self.arrhythmia_detector = ArrhythmiaDetector()
-        self.alarm_active = False
+        self.alarm_active = True
         self.silenced_arrhythmias = set()
 
         #vital signs labels
@@ -35,6 +35,8 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.alarm_label = self.findChild(QtWidgets.QLabel, "alarm_label")
         self.silence_button = self.findChild(QtWidgets.QPushButton, "silence_button")
         self.silence_button.clicked.connect(self.silence_alarm)
+        self.unsilence_button.clicked.connect(self.alarm_reset)
+    
 
         #GRAPHS:
         self.ecg_graph = self.findChild(QtWidgets.QWidget, "ecg_graph")
@@ -155,15 +157,24 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.resp_value_2.setText(f"{int(round(self.patient_data.respiration_rate))}")
         if self.patient_data.pattern_name == "Normal":
             self.pattern_value.setText(self.patient_data.pattern_name)
-            self.alarm_label.setText("Normal")
             self.pattern_value.setStyleSheet("color: green;font-size: 30px;")
             self.alarm_label.setStyleSheet("color: green;font-size: 30px;")  
+            if self.alarm_active ==False:
+                self.alarm_label.setText("Alarm paused")
+            else :
+                self.alarm_label.setText("Normal")
   
         else:
             self.pattern_value.setText(self.patient_data.pattern_name)
-            self.alarm_label.setText("ALARM")
             self.pattern_value.setStyleSheet("color: red;font-size: 30px;") 
             self.alarm_label.setStyleSheet("color: red;font-size: 30px;")
+            if self.alarm_active ==False:
+                self.alarm_label.setText("Alarm paused")
+                self.alarm_label.setStyleSheet("color: green;font-size: 30px;")
+            else :
+                self.alarm_label.setText("ALARM")
+                self.alarm_label.setStyleSheet("color: red;font-size: 30px;")
+
 
         # **Update Graphs**
         self.ecg_curve.setData(range(len(self.patient_data.ecg_data)), self.patient_data.ecg_data)
@@ -172,12 +183,12 @@ class MonitoringGUI(QtWidgets.QMainWindow):
     def silence_alarm(self):
         """Silence the alarm"""
         self.alarm_active = False
-        self.alarm_label.setText("Alarm Silenced")
+        self.alarm_label.setText("Alarm  paused")
         self.silence_button.setEnabled(False)
     def alarm_reset(self):
         """Silence the alarm"""
         self.alarm_active = True
-        self.alarm_label.setText("Alarm ")
+        self.alarm_label.setText("Normal ")
         self.silence_button.setEnabled(True)
 
 
