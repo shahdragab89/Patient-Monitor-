@@ -12,6 +12,7 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         super().__init__()
         uic.loadUi("monitoring.ui", self) 
 
+        #data init
         self.patient_data = PatientData()
         self.arrhythmia_detector = ArrhythmiaDetector()
         self.alarm_active = True
@@ -29,18 +30,15 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.heart_rate_label_14 = self.findChild(QtWidgets.QLabel, "label_14") 
         self.heart_rate_label = self.findChild(QtWidgets.QLabel, "label")
 
-
         #alarm section
         self.alarm_label = self.findChild(QtWidgets.QLabel, "alarm_label")
         self.silence_button = self.findChild(QtWidgets.QPushButton, "silence_button")
         self.silence_button.clicked.connect(self.silence_alarm)
         self.unsilence_button.clicked.connect(self.alarm_reset)
     
-
         #GRAPHS:
         self.ecg_graph = self.findChild(QtWidgets.QWidget, "ecg_graph")
         self.eeg_graph = self.findChild(QtWidgets.QWidget, "eeg_graph")
-
         if self.ecg_graph:
             self.ecg_layout = QtWidgets.QVBoxLayout(self.ecg_graph)
             self.ecg_plot = pg.PlotWidget()
@@ -50,13 +48,10 @@ class MonitoringGUI(QtWidgets.QMainWindow):
             self.eeg_layout = QtWidgets.QVBoxLayout(self.eeg_graph)
             self.eeg_plot = pg.PlotWidget()
             self.eeg_layout.addWidget(self.eeg_plot)
-
         self.ecg_curve = self.ecg_plot.plot([], [], pen='g')
         self.eeg_curve = self.eeg_plot.plot([], [], pen='b')
-
         self.ecg_plot.setBackground(QColor(26, 26, 26))
         self.eeg_plot.setBackground(QColor(26, 26, 26))
-
 
         #cont. updating timers each 0.1s:
         self.timer = QtCore.QTimer(self)
@@ -71,17 +66,13 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         peaks = []
         for i in range(1, len(ecg_data)-1):
             if ecg_data[i] > threshold and ecg_data[i] > ecg_data[i-1] and ecg_data[i] > ecg_data[i+1]:
-                peaks.append(i)
-                
+                peaks.append(i)           
         if len(peaks) < 2:
-            return 0
-            
+            return 0     
         #calculate average distance between peaks in samples
         avg_peak_distance = np.mean(np.diff(peaks))
-
         sampling_rate = 35  
-        heart_rate = (sampling_rate * 60) / avg_peak_distance
-        
+        heart_rate = (sampling_rate * 60) / avg_peak_distance    
         return int(round(heart_rate))
 
     def update_gui(self):
@@ -93,26 +84,25 @@ class MonitoringGUI(QtWidgets.QMainWindow):
             self.spo2_value.setStyleSheet("color: rgb(15, 255, 255);font-size:80pt;")  
 
         # NIBP
-        if 90 <= self.patient_data.ibp_systolic <= 120 and 60 <= self.patient_data.ibp_diastolic <= 80:
+        if 90 <= self.patient_data.ibp_systolic <= 140 and 60 <= self.patient_data.ibp_diastolic <= 90:
             self.ibp_value.setStyleSheet("color: rgb(110, 110, 110);font-size: 16pt;")  
         else:
-            self.ibp_value.setStyleSheet("color: red;font-size: 16pt;")  
-        
+            self.ibp_value.setStyleSheet("color: red;font-size: 16pt;")
+
         # Temperature
         if 36.5 <= self.patient_data.temperature <= 37.5:
             self.temp_value.setStyleSheet("color: white;font-size: 30pt;") 
- 
         else:
             self.temp_value.setStyleSheet("color: red;font-size: 30pt;")
-  
+
         # CO2
         if not 4.7 <= self.patient_data.co2_percent <= 6:
             self.co2_value.setStyleSheet("color: red;font-size: 16pt;")  
         else:
-            self.co2_value.setStyleSheet("color: rgb(15, 255, 255);font-size: 16pt;")  
+            self.co2_value.setStyleSheet("color: rgb(15, 255, 255);font-size: 16pt;") 
 
         # IBP
-        if 90 <= self.patient_data.nibp_systolic <= 140 and 60 <= self.patient_data.nibp_diastolic <= 90:
+        if 100 <= self.patient_data.nibp_systolic <= 140 and 60 <= self.patient_data.nibp_diastolic <= 90:
             self.ibp_value.setStyleSheet("color: rgb(204, 0, 204);font-size: 16pt;")  
         else:
             self.ibp_value.setStyleSheet("color: red;font-size: 16pt;")  
@@ -123,9 +113,9 @@ class MonitoringGUI(QtWidgets.QMainWindow):
             self.resp_value_2.setStyleSheet("color: red;font-size: 80pt;")  
         else:
             self.resp_value.setStyleSheet("color: rgb(255, 255, 13);font-size: 16pt;")
-            self.resp_value_2.setStyleSheet("color: rgb(255, 255, 13);font-size: 80pt;")   
-        
-        # HR Calculaation:
+            self.resp_value_2.setStyleSheet("color: rgb(255, 255, 13);font-size: 80pt;")    
+
+        # HR Calculation:
         heart_rate = self.calculate_heart_rate()
         self.heart_rate_label_14.setText(f"{heart_rate} BPM")
         self.heart_rate_label.setText(f"{heart_rate}") 
@@ -133,10 +123,9 @@ class MonitoringGUI(QtWidgets.QMainWindow):
             color = "green"
         else:
             color = "red"
-        
         self.heart_rate_label_14.setStyleSheet(f"color: {color}; font-size: 16pt;")
         self.heart_rate_label.setStyleSheet(f"color: {color}; font-size: 80pt;")
-        
+
         self.spo2_value.setText(f"{round(self.patient_data.spo2, 1)}%")
         self.nibp_value.setText(f"{int(round(self.patient_data.nibp_systolic))}/{int(round(self.patient_data.nibp_diastolic))} mmHg")
         self.ibp_value.setText(f"{int(round(self.patient_data.ibp_systolic))}/{int(round(self.patient_data.ibp_diastolic))} mmHg")
@@ -144,6 +133,7 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.co2_value.setText(f"{round(self.patient_data.co2_percent, 1)}%")
         self.resp_value.setText(f"{int(round(self.patient_data.respiration_rate))} BPM")
         self.resp_value_2.setText(f"{int(round(self.patient_data.respiration_rate))}")
+
         if self.patient_data.pattern_name == "Normal":
             self.pattern_value.setText(self.patient_data.pattern_name)
             self.pattern_value.setStyleSheet("color: green;font-size: 30px;")
@@ -152,7 +142,6 @@ class MonitoringGUI(QtWidgets.QMainWindow):
                 self.alarm_label.setText("Alarm paused")
             else :
                 self.alarm_label.setText("Normal")
-  
         else:
             self.pattern_value.setText(self.patient_data.pattern_name)
             self.pattern_value.setStyleSheet("color: red;font-size: 30px;") 

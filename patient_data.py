@@ -55,10 +55,10 @@ class PatientData:
         self.afib_duration = 2 
         
         # rapid demo mode
-        self.demo_mode = True
-        self.demo_state = 0
+        self.demo_mode = True #enables automatic state shifts
+        self.demo_state = 0 #current state idx
         self.demo_states = ["Normal", "Tachycardia", "Normal", "Bradycardia", "Normal", "Atrial Fibrillation", "Normal"]
-        self.state_duration = 10  
+        self.state_duration = 10  #secs per state
         self.state_start_time = time.time()
         
         # target values
@@ -85,6 +85,7 @@ class PatientData:
     def update_data(self):
         if self.demo_mode:
             current_time = time.time()
+            #update vals according to state
             if self.demo_states[self.demo_state] == "Normal":
                 self.target_spo2 = 98
                 self.target_nibp_systolic = 120
@@ -128,7 +129,8 @@ class PatientData:
                     self.demo_state = (self.demo_state + 1) % len(self.demo_states)
                     self.state_start_time = current_time
                     self.pattern_start_time = current_time
-        
+
+        # adjust parameters one by one toward target 
         self.spo2 += (self.target_spo2 - self.spo2) * self.transition_rate
         self.nibp_systolic += (self.target_nibp_systolic - self.nibp_systolic) * self.transition_rate
         self.nibp_diastolic += (self.target_nibp_diastolic - self.nibp_diastolic) * self.transition_rate
@@ -138,7 +140,7 @@ class PatientData:
         self.co2_percent += (self.target_co2_percent - self.co2_percent) * self.transition_rate
         self.respiration_rate += (self.target_respiration_rate - self.respiration_rate) * self.transition_rate
         
-        # minimal random fluctuation
+        # random fluctuations
         self.spo2 += random.uniform(-0.05, 0.05)
         self.nibp_systolic += random.uniform(-0.2, 0.2)
         self.nibp_diastolic += random.uniform(-0.2, 0.2)
@@ -148,7 +150,7 @@ class PatientData:
         self.co2_percent += random.uniform(-0.02, 0.02)
         self.respiration_rate += random.uniform(-0.1, 0.1)
         
-        # keep vals in reasonable ranges
+        # keep/clamp vals in reasonable ranges
         self.spo2 = max(min(self.spo2, 100), 85)
         self.nibp_systolic = max(min(self.nibp_systolic, 160), 90)
         self.nibp_diastolic = max(min(self.nibp_diastolic, 110), 50)
@@ -184,7 +186,7 @@ class PatientData:
         self.ecg_data.extend(new_ecg)
         self.eeg_data.extend(new_eeg)
         
-        #keep last 500 points
+        #keep last 500 points to help memory
         if len(self.ecg_data) > 500:
             self.ecg_data = self.ecg_data[-500:]
         if len(self.eeg_data) > 500:
