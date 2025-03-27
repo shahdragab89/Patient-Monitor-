@@ -3,7 +3,6 @@ from PyQt5.QtGui import QColor
 import sys
 import numpy as np
 import pyqtgraph as pg
-import time
 from patient_data import PatientData
 from main import ArrhythmiaDetector
 
@@ -28,10 +27,10 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.resp_value_2 = self.findChild(QtWidgets.QLabel, "resp_value_2")
         self.pattern_value = self.findChild(QtWidgets.QLabel, "pattern_value")
         self.heart_rate_label_14 = self.findChild(QtWidgets.QLabel, "label_14") 
-        self.heart_rate_label = self.findChild(QtWidgets.QLabel, "label")  # Second label for HR
+        self.heart_rate_label = self.findChild(QtWidgets.QLabel, "label")
 
 
-        # alarm section
+        #alarm section
         self.alarm_label = self.findChild(QtWidgets.QLabel, "alarm_label")
         self.silence_button = self.findChild(QtWidgets.QPushButton, "silence_button")
         self.silence_button.clicked.connect(self.silence_alarm)
@@ -65,15 +64,10 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         self.timer.start(100)  
 
     def calculate_heart_rate(self):
-        """Calculate heart rate from ECG data"""
-        # Simple peak detection algorithm
         ecg_data = self.patient_data.ecg_data
         if len(ecg_data) < 2:
             return 0
-            
-        # Threshold for peak detection (adjust based on your ECG data scale)
-        threshold = max(ecg_data) * 0.7
-        
+        threshold = max(ecg_data) * 0.7     
         peaks = []
         for i in range(1, len(ecg_data)-1):
             if ecg_data[i] > threshold and ecg_data[i] > ecg_data[i-1] and ecg_data[i] > ecg_data[i+1]:
@@ -82,10 +76,9 @@ class MonitoringGUI(QtWidgets.QMainWindow):
         if len(peaks) < 2:
             return 0
             
-        # Calculate average distance between peaks in samples
+        #calculate average distance between peaks in samples
         avg_peak_distance = np.mean(np.diff(peaks))
-        
-        # Assuming 100Hz sampling rate (adjust if different)
+
         sampling_rate = 35  
         heart_rate = (sampling_rate * 60) / avg_peak_distance
         
@@ -132,14 +125,10 @@ class MonitoringGUI(QtWidgets.QMainWindow):
             self.resp_value.setStyleSheet("color: rgb(255, 255, 13);font-size: 16pt;")
             self.resp_value_2.setStyleSheet("color: rgb(255, 255, 13);font-size: 80pt;")   
         
-        # Calculate heart rate
+        # HR Calculaation:
         heart_rate = self.calculate_heart_rate()
-        
-        # Update both heart rate labels
         self.heart_rate_label_14.setText(f"{heart_rate} BPM")
-        self.heart_rate_label.setText(f"{heart_rate}")  # Display in the second label
-        
-        # Set color based on normal range (60-100 BPM for adults)
+        self.heart_rate_label.setText(f"{heart_rate}") 
         if 60 <= heart_rate <= 100:
             color = "green"
         else:
@@ -176,17 +165,16 @@ class MonitoringGUI(QtWidgets.QMainWindow):
                 self.alarm_label.setStyleSheet("color: red;font-size: 30px;")
 
 
-        # **Update Graphs**
+        #Updating graphs
         self.ecg_curve.setData(range(len(self.patient_data.ecg_data)), self.patient_data.ecg_data)
         self.eeg_curve.setData(range(len(self.patient_data.eeg_data)), self.patient_data.eeg_data)
 
     def silence_alarm(self):
-        """Silence the alarm"""
         self.alarm_active = False
         self.alarm_label.setText("Alarm  paused")
         self.silence_button.setEnabled(False)
+
     def alarm_reset(self):
-        """Silence the alarm"""
         self.alarm_active = True
         self.alarm_label.setText("Normal ")
         self.silence_button.setEnabled(True)

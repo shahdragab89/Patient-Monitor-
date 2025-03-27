@@ -1,10 +1,5 @@
-import tkinter as tk
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import random
 import time
-import threading
 
 class PatientData:
     def __init__(self):
@@ -21,12 +16,12 @@ class PatientData:
         
         self.pattern_repeat = {
             "Normal": 1,
-            "Tachycardia": 0.6,  # Display more beats (faster)
-            "Bradycardia": 1.5,  # Display fewer beats (slower)
+            "Tachycardia": 0.6,  # more beats (faster)
+            "Bradycardia": 1.5,  # fewer beats (slower)
             "Atrial Fibrillation": 0.8
         }
         
-        # ECG patterns for normal and arrhythmias
+        #normal ecg pattern
         self.ecg_normal = [
             0, 0.1, 0.15, 0.1, 0, -0.05, -0.1, 0,      # P wave
             0, 0.1, -0.1, -0.05, 0,                   # PR segment
@@ -34,39 +29,39 @@ class PatientData:
             0, 0.1, 0.3, 0.2, 0.1, 0, -0.1, 0          # T wave
         ]
 
-        # Tachycardia: Same shape but compressed (for faster rate)
+        #tachy faster rate
         self.ecg_tachycardia = [
-            0, 0.1, 0.15, 0.1, 0,                     # P wave (shorter)
-            -0.05, -0.1, 0, 0,                        # PR segment (shorter)
-            -0.2, 1.5, -0.2, 0,                       # QRS complex (slightly smaller amplitude)
-            0.1, 0.25, 0.1, 0, -0.1, 0                # T wave (shorter)
+            0, 0.1, 0.15, 0.1, 0,                   
+            -0.05, -0.1, 0, 0,                       
+            -0.2, 1.5, -0.2, 0,                      
+            0.1, 0.25, 0.1, 0, -0.1, 0                
         ]
 
-        # Bradycardia: Same shape but stretched (for slower rate)
+        # brady slower rate
         self.ecg_bradycardia = [
-            0, 0.05, 0.1, 0.15, 0.1, 0.05, 0,         # P wave (longer)
-            -0.05, -0.1, -0.05, 0, 0, 0,              # PR segment (longer)
-            0, -0.2, -0.1, 1.8, -0.1, -0.2, 0, 0,     # QRS complex
-            0, 0.1, 0.2, 0.3, 0.25, 0.2, 0.1, 0, -0.1, -0.05, 0  # T wave (longer)
+            0, 0.05, 0.1, 0.15, 0.1, 0.05, 0,        
+            -0.05, -0.1, -0.05, 0, 0, 0,             
+            0, -0.2, -0.1, 1.8, -0.1, -0.2, 0, 0,    
+            0, 0.1, 0.2, 0.3, 0.25, 0.2, 0.1, 0, -0.1, -0.05, 0 
         ]
+
+        # afib arrythmia
         self.ecg_afib = [0, 0.1, -0.1, 0.2, -0.2, 0.1, 0.3, -0.3, 0.5, -0.2, 1.0, 0.5, 0.2, -0.3, 0.2, -0.1, 0.1, 0]
         
-        # Current ECG pattern
+
         self.current_pattern = self.ecg_normal
         self.pattern_name = "Normal"
-        
-        # Pattern tracking
         self.pattern_start_time = time.time()
-        self.afib_duration = 2  # Duration in seconds for A-fib
+        self.afib_duration = 2 
         
-        # Rapid demo mode
+        # rapid demo mode
         self.demo_mode = True
         self.demo_state = 0
         self.demo_states = ["Normal", "Tachycardia", "Normal", "Bradycardia", "Normal", "Atrial Fibrillation", "Normal"]
-        self.state_duration = 10  # Increased from 5 to 10 seconds per state for more stability
+        self.state_duration = 10  
         self.state_start_time = time.time()
         
-        # Vital sign target values (for smoother transitions)
+        # target values
         self.target_spo2 = 98
         self.target_nibp_systolic = 120
         self.target_nibp_diastolic = 80
@@ -76,23 +71,20 @@ class PatientData:
         self.target_co2_percent = 5.0
         self.target_respiration_rate = 16
         
-        # Transition rate (lower = more stable, gradual changes)
-        self.transition_rate = 0.05  # Reduced for more stability
+        # transition rate
+        self.transition_rate = 0.05  
         
-        # Initialize with some data
+        # initialize with some data
         for _ in range(100):
-            self.ecg_data.extend(self.add_noise(self.current_pattern.copy(), 0.02))  # Reduced noise
-            self.eeg_data.extend(self.add_noise([random.uniform(-0.4, 0.4) for _ in range(10)], 0.05))  # Reduced noise
+            self.ecg_data.extend(self.add_noise(self.current_pattern.copy(), 0.02))  
+            self.eeg_data.extend(self.add_noise([random.uniform(-0.4, 0.4) for _ in range(10)], 0.05)) 
     
     def add_noise(self, data, noise_level):
         return [d + random.uniform(-noise_level, noise_level) for d in data]
     
     def update_data(self):
-        # Rapid change to vitals for demonstration
         if self.demo_mode:
             current_time = time.time()
-            
-            # Update target values based on current demo state
             if self.demo_states[self.demo_state] == "Normal":
                 self.target_spo2 = 98
                 self.target_nibp_systolic = 120
@@ -130,14 +122,13 @@ class PatientData:
                 self.target_co2_percent = 6.5
                 self.target_respiration_rate = 24
             
-            # Move to next state if time is up
+            #move to next state when time is up
             if current_time - self.state_start_time > self.state_duration:
                 if self.pattern_name != "Atrial Fibrillation" or (self.pattern_name == "Atrial Fibrillation" and current_time - self.pattern_start_time > self.afib_duration):
                     self.demo_state = (self.demo_state + 1) % len(self.demo_states)
                     self.state_start_time = current_time
                     self.pattern_start_time = current_time
         
-        # Gradually transition vital signs toward target values (for stability)
         self.spo2 += (self.target_spo2 - self.spo2) * self.transition_rate
         self.nibp_systolic += (self.target_nibp_systolic - self.nibp_systolic) * self.transition_rate
         self.nibp_diastolic += (self.target_nibp_diastolic - self.nibp_diastolic) * self.transition_rate
@@ -147,7 +138,7 @@ class PatientData:
         self.co2_percent += (self.target_co2_percent - self.co2_percent) * self.transition_rate
         self.respiration_rate += (self.target_respiration_rate - self.respiration_rate) * self.transition_rate
         
-        # Add minimal random fluctuation (much reduced from original)
+        # minimal random fluctuation
         self.spo2 += random.uniform(-0.05, 0.05)
         self.nibp_systolic += random.uniform(-0.2, 0.2)
         self.nibp_diastolic += random.uniform(-0.2, 0.2)
@@ -157,7 +148,7 @@ class PatientData:
         self.co2_percent += random.uniform(-0.02, 0.02)
         self.respiration_rate += random.uniform(-0.1, 0.1)
         
-        # Keep all values in reasonable ranges
+        # keep vals in reasonable ranges
         self.spo2 = max(min(self.spo2, 100), 85)
         self.nibp_systolic = max(min(self.nibp_systolic, 160), 90)
         self.nibp_diastolic = max(min(self.nibp_diastolic, 110), 50)
@@ -167,7 +158,7 @@ class PatientData:
         self.co2_percent = max(min(self.co2_percent, 8.0), 3.0)
         self.respiration_rate = max(min(self.respiration_rate, 30), 8)
         
-        # Update ECG pattern based on demo state
+        # update ECG pattern
         self.pattern_name = self.demo_states[self.demo_state]
         if self.pattern_name == "Normal":
             self.current_pattern = self.ecg_normal
@@ -178,30 +169,25 @@ class PatientData:
         elif self.pattern_name == "Atrial Fibrillation":
             self.current_pattern = self.ecg_afib
         
-        # Add new data points with reduced noise
-        # With:
+        # add new data points with reduced noise
         repeat = self.pattern_repeat.get(self.pattern_name, 1)
         if repeat == 1:
             new_ecg = self.add_noise(self.current_pattern.copy(), 0.02)
         else:
-            # For tachycardia, sample fewer points (makes pattern appear more frequent)
-            # For bradycardia, sample more points (makes pattern appear less frequent)
             sample_rate = max(1, int(len(self.current_pattern) * repeat))
             sampled_pattern = []
             for i in range(sample_rate):
                 idx = min(int(i * len(self.current_pattern) / sample_rate), len(self.current_pattern) - 1)
                 sampled_pattern.append(self.current_pattern[idx])
             new_ecg = self.add_noise(sampled_pattern, 0.02)
-        new_eeg = self.add_noise([random.uniform(-0.4, 0.4) for _ in range(10)], 0.05)  # Reduced noise
-        
+        new_eeg = self.add_noise([random.uniform(-0.4, 0.4) for _ in range(10)], 0.05) 
         self.ecg_data.extend(new_ecg)
         self.eeg_data.extend(new_eeg)
         
-        # Keep only the last 500 points
+        #keep last 500 points
         if len(self.ecg_data) > 500:
             self.ecg_data = self.ecg_data[-500:]
         if len(self.eeg_data) > 500:
             self.eeg_data = self.eeg_data[-500:]
         
-        return self.pattern_name != "Normal"  # Return True if there's an arrhythmia
-
+        return self.pattern_name != "Normal"  #true if arrythmia

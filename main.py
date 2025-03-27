@@ -1,17 +1,9 @@
-import tkinter as tk
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import random
-import time
-import threading
-
 class ArrhythmiaDetector:
     def __init__(self):
-        # Thresholds for different arrhythmias
-        self.tachycardia_threshold = 100  # > 100 bpm
-        self.bradycardia_threshold = 60   # < 60 bpm
-        # For A-fib, we'll use irregularity detection based on RR intervals
+        # dif arrythmias 
+        self.tachycardia_threshold = 100  
+        self.bradycardia_threshold = 60   
+        # irregularity detection based on RR intervals
         self.afib_irregularity_threshold = 0.15
     
     def detect_arrhythmia(self, ecg_data, pattern_name):
